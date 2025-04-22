@@ -17,10 +17,10 @@ Given('a user is on the homepage', async () => {
 });
 
 Given('the page contains the following tasks:', async (table: DataTable) => {
-  const data = table.hashes();
+  const data = table.hashes() as { TASK: string }[];
 
   for (const row of data) {
-    await taskInput.fill(row['TASK']);
+    await taskInput.fill(row.TASK);
     await addButton.click();
   }
 });
