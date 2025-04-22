@@ -50,58 +50,23 @@ TailwindCSS provides significant advantages to development teams by:
 1. **Accelerating UI Development**: Utility-first approach eliminates the need to write custom CSS, allowing faster implementation of designs.
 2. **Maintaining Consistency**: Pre-defined design system with constraints for spacing, colors, typography, and more ensures visual consistency.
 3. **Reducing CSS Complexity**:
-  - No need to create and maintain complex CSS class naming systems
-  - Minimizes CSS specificity issues and selector conflicts
-  - Results in smaller bundle sizes through optimized production builds
+   - No need to create and maintain complex CSS class naming systems
+   - Minimizes CSS specificity issues and selector conflicts
+   - Results in smaller bundle sizes through optimized production builds
 4. **Improving Developer Experience**:
-  - Write styles directly in your markup without context switching
-  - IntelliSense support in modern IDEs provides autocomplete
-  - Predictable styling behavior with direct control over every element
+   - Write styles directly in your markup without context switching
+   - IntelliSense support in modern IDEs provides autocomplete
+   - Predictable styling behavior with direct control over every element
 5. **Supporting Responsive Design**: Built-in responsive modifiers (sm:, md:, lg:, etc.) make creating adaptive interfaces straightforward.
 
 This project demonstrates how TailwindCSS integrates with Angular components to create maintainable, consistent UI patterns while
 reducing style-related technical debt.
 
-## Development Guide
+## Documentation
 
-### Development server
+The following documentation is available to help you get started and understand the project:
 
-To start a local development server, run:
-
-```bash
-npm run dev
-```
-
-### Building
-
-To build the project run:
-
-```bash
-npm run build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-### End-to-End / Assurance Tests
-
-First-time setup requires install Playwright browsers:
-
-```bash
-npm run e2e:install
-```
-
-#### Running All Tests
-
-To run the BDD tests with Cucumber.js and Playwright:
-
-```bash
-npm run test:e2e
-```
-
-#### Executing a Specific Feature
-
-To run a specific feature file, use the following command:
-
-```bash
-npm run test:e2e ./tests/assurance/features/your-feature-file.feature
-```
+1. [Quick Start Guide](./docs/quick-start-guide.md): A step-by-step guide to set up and run the project.
+2. [Development Guide](./docs/development-guide.md): Instructions for setting up and running the development environment.
+3. [Project Structure](./docs/project-structure.md): Overview of the project's folder and file structure.
+4. [Live Demo](./docs/live-demo.md): Information about the live demo of the project.

@@ -9,8 +9,8 @@
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
     "stylelint.vscode-stylelint",
+    "vitest.explorer",
     "yoavbls.pretty-ts-errors",
-    "webben.browserslist",
-    "zixuanchen.vitest-explorer"
+    "webben.browserslist"
   ]
 }

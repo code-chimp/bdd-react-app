@@ -2,7 +2,7 @@ import { Before, DataTable, Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { Locator } from 'playwright';
 
-const url = 'http://localhost:5000';
+const url = 'http://localhost:3000';
 let taskInput: Locator;
 let addButton: Locator;
 
@@ -49,7 +49,7 @@ Then('card {string} should be displayed in the todo list', async (task: string) 
 
 Then('the task labeled {string} should be marked as completed', async (taskName: string) => {
   const checkbox = page.getByRole('checkbox', {
-    name: `Mark ${taskName} as incomplete`, // When unchecked, aria-label says "Mark as complete"
+    name: `Mark ${taskName} as incomplete`, // When checked, aria-label says "Mark as incomplete"
   });
 
   await expect(checkbox).toBeChecked();
