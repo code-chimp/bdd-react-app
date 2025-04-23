@@ -1,67 +1,54 @@
 import { Before, DataTable, Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
-import { Locator } from 'playwright';
+import { TodoManagerPage } from '../../page-objects/todo-manager.page.cts';
 
-const url = 'http://localhost:3000';
-let taskInput: Locator;
-let addButton: Locator;
+let todoManagerPage: TodoManagerPage;
 
 Before(() => {
-  taskInput = page.getByPlaceholder('Add a new task');
-  addButton = page.getByRole('button', { name: 'Add Task' });
+  todoManagerPage = new TodoManagerPage(page);
 });
 
 // Given
 Given('a user is on the homepage', async () => {
-  await page.goto(url);
+  await todoManagerPage.navigate();
 });
 
 Given('the page contains the following tasks:', async (table: DataTable) => {
   const data = table.hashes() as { TASK: string }[];
 
   for (const row of data) {
-    await taskInput.fill(row.TASK);
-    await addButton.click();
+    await todoManagerPage.addTask(row.TASK);
   }
 });
 
 // When
 When('the user adds {string} to the todo list using the input field', async (task: string) => {
-  await taskInput.fill(task);
-  await addButton.click();
+  await todoManagerPage.addTask(task);
 });
 
 When(
   'the user clicks the checkbox for the task labeled {string}',
   async (taskName: string) => {
-    const checkbox = page.getByRole('checkbox', {
-      name: `Mark ${taskName} as complete`, // When unchecked, aria-label says "Mark as complete"
-    });
-    await checkbox.click();
+    // await todoManagerPage.markTaskComplete(taskName);
+    await todoManagerPage.toggleTask(taskName);
   },
 );
 
 // Then
 Then('card {string} should be displayed in the todo list', async (task: string) => {
-  const text = page.getByText(task, { exact: true });
-  await expect(text).toBeVisible();
+  const taskLocator = await todoManagerPage.getTaskLocator(task);
+  await expect(taskLocator).toBeVisible();
 });
 
 Then('the task labeled {string} should be marked as completed', async (taskName: string) => {
-  const checkbox = page.getByRole('checkbox', {
-    name: `Mark ${taskName} as incomplete`, // When checked, aria-label says "Mark as incomplete"
-  });
-
+  const checkbox = await todoManagerPage.getTaskCheckbox(taskName, true);
   await expect(checkbox).toBeChecked();
 });
 
 Then(
   'the task labeled {string} should not be marked as completed',
   async (taskName: string) => {
-    const checkbox = page.getByRole('checkbox', {
-      name: `Mark ${taskName} as complete`, // When unchecked, aria-label says "Mark as complete"
-    });
-
+    const checkbox = await todoManagerPage.getTaskCheckbox(taskName, false);
     await expect(checkbox).not.toBeChecked();
   },
 );
