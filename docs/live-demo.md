@@ -149,24 +149,33 @@ If you look at the output carefully it is giving you the code needed in your fea
 +           return 'pending';
 +         });
 ```
+
 ### Last: Implement your test logic
 
-We need to add the suggested code to the step definitions in the feature's context in 
-`./tests/assurance/step-definitions/todo-manager.context.cts`. Adjust any suggested parameters for TypeScript and
-implement your Playwright test code:
+First we will need to add a new locator for the target delete button to the Todo Manager page object in `./tests/page-objects/todo-manager.page.cts`:
+
+```typescript
+async getTaskDeleteButton(taskName: string) {
+  return this.page.getByRole('button', {
+    name: `Delete task: ${taskName}`,
+  });
+}
+```
+
+Then we can add the suggested code to the step definitions in the feature's context in
+`./tests/assurance/step-definitions/todo-manager.context.cts`. Adjust any suggested parameters for TypeScript and implement your Playwright test code:
 
 ```typescript
 
 When('the user clicks the delete button for the task labeled {string}', async (taskName: string) => {
-  const deleteButton = page.getByRole('button', {
-    name: `Delete task: ${taskName}`,
-  });
+  const deleteButton = await todoManagerPage.getTaskDeleteButton(taskName);
   await deleteButton.click();
 });
 
 
 Then('card {string} should be removed from the todo list', async (task: string) => {
-  await expect(page.getByText(task, { exact: true })).not.toBeVisible();
+  const taskLocator = await todoManagerPage.getTaskLocator(task);
+  await expect(taskLocator).not.toBeVisible();
 });
 
 ```
