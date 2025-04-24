@@ -70,3 +70,5 @@ The following documentation is available to help you get started and understand 
 2. [Development Guide](./docs/development-guide.md): Instructions for setting up and running the development environment.
 3. [Project Structure](./docs/project-structure.md): Overview of the project's folder and file structure.
 4. [Live Demo](./docs/live-demo.md): Information about the live demo of the project.
+5. [Would You Like to Know More?](./docs/would-you-like-to-know-more.md): Additional articles and tutorials about the methods and technologies used in this project.
+
