@@ -8,7 +8,7 @@ Before(() => {
   todoManagerPage = new TodoManagerPage(page);
 });
 
-// Given
+// Given -- setup
 Given('a user is on the homepage', async () => {
   await todoManagerPage.navigate();
 });
@@ -21,7 +21,7 @@ Given('the page contains the following tasks:', async (table: DataTable) => {
   }
 });
 
-// When
+// When -- actions
 When('the user adds {string} to the todo list using the input field', async (task: string) => {
   await todoManagerPage.addTask(task);
 });
@@ -34,7 +34,7 @@ When(
   },
 );
 
-// Then
+// Then -- assertions
 Then('card {string} should be displayed in the todo list', async (task: string) => {
   const taskLocator = await todoManagerPage.getTaskLocator(task);
   await expect(taskLocator).toBeVisible();
