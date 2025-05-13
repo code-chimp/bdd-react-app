@@ -29,14 +29,17 @@
     "url": "https://code-chimp.com"
   },
   "volta": {
-    "node": "22.14.0"
+    "node": "24.0.1"
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "check:lockfile": "node ./scripts/validate-lockfile.cjs",
     "e2e:install": "npx playwright install",
-    "test:e2e": "cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js",
+    "test:bdd": "run-s test:bdd:run test:bdd:format",
+    "test:bdd:run": "cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js -f json:./reports/cucumber_report.json",
+    "test:bdd:format": "node ./scripts/cucumber-html-reporter.mjs",
     "test:spec": "ng test",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
@@ -44,7 +47,8 @@
     "lint:ts": "eslint ./src/**/**.ts",
     "fix:ts": "eslint ./src/**/**.ts* --fix",
     "lint:styles": "stylelint \"./src/**/*.css\"",
-    "fix:styles": "stylelint \"./src/**/*.css\" --fix"
+    "fix:styles": "stylelint \"./src/**/*.css\" --fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
@@ -74,6 +78,8 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
