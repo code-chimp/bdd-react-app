@@ -27,6 +27,13 @@
 - **[Playwright](https://playwright.dev/)**: Browser automation library for end-to-end testing
 - **[TailwindCSS](https://tailwindcss.com/)**: Utility-first CSS framework for efficient styling
 
+### Note on .cts File Extension
+
+This project uses Vite and specifies "type": "module" in the package.json, which enforces ECMAScript module 
+(ESM) behavior by default. To ensure compatibility with CommonJS modules required by tools like Cucumber.js, 
+TypeScript files in the tests directory use the .cts file extension. This explicitly marks them as CommonJS 
+modules, allowing seamless integration with the testing framework.
+
 ## The Value of BDD and Living Documentation
 
 Behavior-Driven Development bridges the gap between technical and non-technical stakeholders by:
