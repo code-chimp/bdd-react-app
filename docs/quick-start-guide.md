@@ -59,7 +59,7 @@ npm run e2e:install
 To execute all BDD tests:
 
 ```bash
-npm run test:e2e
+npm run test:bdd
 ```
 
 ### Run a Specific Feature
@@ -67,7 +67,7 @@ npm run test:e2e
 To run a specific feature file:
 
 ```bash
-npm run test:e2e ./tests/assurance/features/your-feature-file.feature
+npm run test:bdd ./tests/assurance/features/your-feature-file.feature
 ```
 
 ## Additional Resources

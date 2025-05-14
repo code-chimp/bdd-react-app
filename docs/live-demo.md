@@ -66,7 +66,7 @@ a step definition in code for those lines yet.
 Try to run the new scenario and pay attention to the output in the terminal.
 
 ```shell
-npm run test:e2e ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
+npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
 ```
 
 You should see something similar to this in the output:
@@ -183,9 +183,9 @@ Then('card {string} should be removed from the todo list', async (task: string) 
 Which should result in a successful run if we did everything correctly:
 
 ```shell
-❯ npm run test:e2e ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
+❯ npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
 
-> bdd-react-app@1.0.0 test:e2e
+> bdd-react-app@1.0.0 test:bdd
 > cucumber-js ./tests/assurance/features/todo-manager.feature --name Delete an existing task item from the task list
 
 Feature: Todo List Manager # tests/assurance/features/todo-manager.feature:1
