@@ -2,11 +2,11 @@ import reporter from 'cucumber-html-reporter';
 
 reporter.generate({
   theme: 'bootstrap',
-  jsonFile: 'reports/cucumber_report.json',
-  output: 'reports/cucumber_report.html',
+  jsonFile: 'reports/bdd-report.json',
+  output: 'reports/bdd-report-deluxe.html',
   brandTitle: 'Acceptance Tests',
   reportSuiteAsScenarios: true,
-  launchReport: true,
+  launchReport: false,
   metadata: {
     'App Version': '1.0.0',
     'Test Environment': 'STAGING',

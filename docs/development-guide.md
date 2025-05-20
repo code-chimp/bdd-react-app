@@ -6,8 +6,8 @@ This guide provides instructions for setting up and running the development envi
 
 Ensure you have the following installed on your system:
 
-- **Node.js** (v20 or later)
-- **npm** (v7 or later)
+- **Node.js** (v22.15.1 or later)
+- **npm** (v10 or later)
 
 ## Setting Up the Development Environment
 
@@ -77,6 +77,25 @@ To run a specific feature file using the **Scenario:** text description:
 ```bash
 npm run test:bdd ./tests/assurance/features/your-feature-file.feature -- --name "Delete an existing task item from the task list"
 ```
+
+## Test Reports
+
+After running the tests, several report formats are generated in the `reports/` directory:
+
+- **Basic HTML Report**: `reports/bdd-report-basic.html`
+- **Enhanced HTML Report**: `reports/bdd-report-deluxe.html`
+- **JSON Report**: `reports/bdd-report.json`
+- **JUnit Report**: `reports/bdd-report.xml`
+- **Multiple Format Report**: `reports/bdd-report-multiple/index.html`
+
+The multiple format report includes:
+- Test execution details
+- Feature and scenario statistics
+- Platform and browser information
+- Screenshots for failed scenarios
+- Detailed step execution logs
+
+Screenshots of failed tests are automatically captured and included in the reports.
 
 ## Additional Resources
 

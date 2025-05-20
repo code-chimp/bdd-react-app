@@ -47,15 +47,15 @@ Feature: Todo List Manager
 
   Scenario: Delete an existing task item from the task list
     Given a user is on the homepage
-    And the page contains the following tasks:
-      | TASK         |
-      | do not touch |
-      | complete me  |
-      | filler task  |
+      And the page contains the following tasks:
+        | TASK         |
+        | do not touch |
+        | complete me  |
+        | filler task  |
     When the user clicks the delete button for the task labeled "filler task"
     Then card "filler task" should be removed from the todo list
-    And card "do not touch" should be displayed in the todo list
-    And card "complete me" should be displayed in the todo list
+      And card "do not touch" should be displayed in the todo list
+      And card "complete me" should be displayed in the todo list
 ```
 
 If you see errors or warnings on two of the lines, that is merely your IDE informing you we have not implemented
@@ -66,7 +66,7 @@ a step definition in code for those lines yet.
 Try to run the new scenario and pay attention to the output in the terminal.
 
 ```shell
-npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
+npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --dry-run --name "Delete an existing task item from the task list"
 ```
 
 You should see something similar to this in the output:
@@ -97,10 +97,10 @@ Feature: Todo List Manager # tests/assurance/features/todo-manager.feature:1
 Failures:
 
 1) Scenario: Delete an existing task item from the task list # tests/assurance/features/todo-manager.feature:23
-   √ Before # tests/cucumber.conf.cts:19
-   √ Before # tests/assurance/step-definitions/todo-manager.context.cts:9
-   √ Given a user is on the homepage # tests/assurance/step-definitions/todo-manager.context.cts:15
-   √ And the page contains the following tasks: # tests/assurance/step-definitions/todo-manager.context.cts:19
+   √ Before # tests/cucumber.hooks.cts:19
+   √ Before # tests/assurance/step-definitions/todo-manager.steps.cts:9
+   √ Given a user is on the homepage # tests/assurance/step-definitions/todo-manager.steps.cts:15
+   √ And the page contains the following tasks: # tests/assurance/step-definitions/todo-manager.steps.cts:19
        | TASK         |
        | do not touch |
        | complete me  |
@@ -108,7 +108,7 @@ Failures:
    ? When the user clicks the delete button for the task labeled "filler task"
        Undefined. Implement with the following snippet:
 
-         When('the user clicks the delete button for the task labeled {string}', function (string) {
+         When('the user clicks the delete button for the task labeled {string}', async function (string) {
            // Write code here that turns the phrase above into concrete actions
            return 'pending';
          });
@@ -116,14 +116,14 @@ Failures:
    ? Then card "filler task" should be removed from the todo list
        Undefined. Implement with the following snippet:
 
-         Then('card {string} should be removed from the todo list', function (string) {
+         Then('card {string} should be removed from the todo list', async function (string) {
            // Write code here that turns the phrase above into concrete actions
            return 'pending';
          });
 
-   - And card "do not touch" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.context.cts:45
-   - And card "complete me" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.context.cts:45
-   √ After # tests/cucumber.conf.cts:26
+   - And card "do not touch" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.steps.cts:45
+   - And card "complete me" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.steps.cts:45
+   √ After # tests/cucumber.hooks.cts:26
 
 1 scenario (1 undefined)
 6 steps (2 undefined, 2 skipped, 2 passed)
@@ -136,7 +136,7 @@ If you look at the output carefully it is giving you the code needed in your fea
 -   ? When the user clicks the delete button for the task labeled "filler task"
 -       Undefined. Implement with the following snippet:
 -
-+         When('the user clicks the delete button for the task labeled {string}', function (string) {
++         When('the user clicks the delete button for the task labeled {string}', async function (string) {
 +           // Write code here that turns the phrase above into concrete actions
 +           return 'pending';
 +         });
@@ -144,7 +144,7 @@ If you look at the output carefully it is giving you the code needed in your fea
 -   ? Then card "filler task" should be removed from the todo list
 -       Undefined. Implement with the following snippet:
 -
-+         Then('card {string} should be removed from the todo list', function (string) {
++         Then('card {string} should be removed from the todo list', async function (string) {
 +           // Write code here that turns the phrase above into concrete actions
 +           return 'pending';
 +         });
@@ -163,7 +163,7 @@ async getTaskDeleteButton(taskName: string) {
 ```
 
 Then we can add the suggested code to the step definitions in the feature's context in
-`./tests/assurance/step-definitions/todo-manager.context.cts`. Adjust any suggested parameters for TypeScript and implement your Playwright test code:
+`./tests/assurance/step-definitions/todo-manager.steps.cts`. Adjust any suggested parameters for TypeScript and implement your Playwright test code:
 
 ```typescript
 

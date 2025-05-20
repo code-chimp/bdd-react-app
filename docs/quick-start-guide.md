@@ -6,8 +6,8 @@ Welcome to the BDD React Demo with Cucumber.js and Playwright! This guide will h
 
 Before you begin, ensure you have the following installed on your system:
 
-- **Node.js** (v16 or later)
-- **npm** (v7 or later)
+- **Node.js** (v22.15.1 or later)
+- **npm** (v10 or later)
 
 ## Installation
 

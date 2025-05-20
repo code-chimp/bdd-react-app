@@ -19,3 +19,15 @@ Feature: Todo List Manager
     Then the task labeled "complete me" should be marked as completed
       And the task labeled "do not touch" should not be marked as completed
       And the task labeled "filler task" should not be marked as completed
+
+  Scenario: Delete an existing task item from the task list
+    Given a user is on the homepage
+      And the page contains the following tasks:
+        | TASK         |
+        | do not touch |
+        | complete me  |
+        | filler task  |
+    When the user clicks the delete button for the task labeled "filler task"
+    Then card "filler task" should be removed from the todo list
+    And card "do not touch" should be displayed in the todo list
+    And card "complete me" should be displayed in the todo list

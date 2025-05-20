@@ -25,8 +25,11 @@ Contains project level assets not used in application.
 
 Contains project documentation.
 
+- **development-guide.md**: Detailed guide for developers working on the project.
 - **live-demo.md**: Documentation for the live demo.
+- **project-structure.md**: Overview of the project's folder and file structure.
 - **quick-start-guide.md**: Quick start guide for setting up and running the project.
+- **would-you-like-to-know-more.md**: Additional learning resources and references.
 
 ### `public/`
 
@@ -72,22 +75,56 @@ Components related to task management.
 
 #### `src/models/`
 
-Contains TypeScript models used in the application.
+Contains TypeScript interfaces and type definitions.
 
-- **Task.ts**: Model for task data.
+- **Task.ts**: Interface definition for task data.
 
 #### `src/store/`
 
-Contains state management logic.
+Contains state management using Zustand.
 
-- **useTaskStore.ts**: Zustand store for managing tasks.
+- **useTaskStore.ts**: Zustand store implementation for task management.
+
+### `reports/`
+
+Contains test execution reports and artifacts.
+
+- **bdd-report-basic.html**: Basic HTML report of test execution.
+- **bdd-report-deluxe.html**: Enhanced HTML report with additional details.
+- **bdd-report.json**: JSON format test results.
+- **bdd-report.xml**: JUnit format test results.
+- **bdd-report-multiple/**: Directory containing multiple-format HTML reports.
+
+### `scripts/`
+
+Contains utility scripts for the project.
+
+- **cucumber-html-reporter.mjs**: Generates HTML reports from Cucumber test results.
+- **multiple-cucumber-html-reporter.mjs**: Generates enhanced HTML reports.
+- **notify-lockfile-changed.js**: Notifies when package-lock.json changes.
+- **validate-lockfile.cjs**: Validates package manager lock files.
 
 ### `tests/`
 
 Contains test-related files and configurations.
 
-- **cucumber.conf.cts**: Configuration file for Cucumber.js.
-- **global.d.ts**: Global TypeScript declarations for tests.
+#### `tests/assurance/`
+
+Contains BDD test features and step definitions.
+
+- **features/**: Contains Gherkin feature files.
+  - **todo-manager.feature**: Feature file for the task manager.
+- **hooks/**: Contains test hooks and global configurations.
+  - **cucumber.hooks.cts**: Configuration and lifecycle hooks for Cucumber.js.
+  - **global.d.ts**: Global TypeScript declarations for tests.
+- **step-definitions/**: Contains step definition files.
+  - **todo-manager.steps.cts**: Step definitions for the task manager feature.
+
+#### `tests/page-objects/`
+
+Contains Playwright page object models.
+
+- **todo-manager.page.cts**: Page object model for the todo manager interface.
 
 #### `tests/assurance/`
 
@@ -96,4 +133,4 @@ Contains BDD test features and step definitions.
 - **features/**: Contains Gherkin feature files.
   - **todo-manager.feature**: Feature file for the task manager.
 - **step-definitions/**: Contains step definition files.
-  - **todo-manager.context.cts**: Step definitions for the task manager feature.
+  - **todo-manager.steps.cts**: Step definitions for the task manager feature.

@@ -1,6 +1,6 @@
 # BDD React Demo with Cucumber.js and Playwright
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io) [![license](https://img.shields.io/badge/license-0BSD-green.svg)](https://github.com/code-chimp/bdd-ng-app/blob/main/LICENSE) [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/npm) [![react](https://img.shields.io/badge/react-19.1.0-red.svg)](https://react.dev/) [![tailwindcss](https://img.shields.io/badge/tailwindcss-3.3.2-blue.svg)](https://tailwindcss.com/) [![cucumber](https://img.shields.io/badge/cucumber-8.7.0-yellow.svg)](https://cucumber.io/) [![playwright](https://img.shields.io/badge/playwright-1.38.0-orange.svg)](https://playwright.dev/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io) [![license](https://img.shields.io/badge/license-0BSD-green.svg)](https://github.com/code-chimp/bdd-react-app/blob/main/LICENSE) [![node](https://img.shields.io/badge/node->=22.15.1-brightgreen.svg)](https://nodejs.org) [![react](https://img.shields.io/badge/react-19.1.0-red.svg)](https://react.dev/) [![tailwindcss](https://img.shields.io/badge/tailwindcss-4.1.7-blue.svg)](https://tailwindcss.com/) [![cucumber](https://img.shields.io/badge/cucumber-11.3.0-yellow.svg)](https://cucumber.io/) [![playwright](https://img.shields.io/badge/playwright-1.52.0-orange.svg)](https://playwright.dev/)
 
 <table style="border:none">
 <tbody>
@@ -78,4 +78,37 @@ The following documentation is available to help you get started and understand 
 3. [Project Structure](./docs/project-structure.md): Overview of the project's folder and file structure.
 4. [Live Demo](./docs/live-demo.md): Information about the live demo of the project.
 5. [Would You Like to Know More?](./docs/would-you-like-to-know-more.md): Additional articles and tutorials about the methods and technologies used in this project.
+
+## Development Environment
+
+### Recommended VS Code Extensions
+
+The project includes recommended VS Code extensions for an optimal development experience:
+
+- **Tailwind CSS IntelliSense**: Smart Tailwind CSS tooling
+- **npm Intellisense**: Autocompletes npm modules in import statements
+- **Cucumber (Gherkin) Full Support**: Official Cucumber extension
+- **ESLint**: JavaScript linting
+- **EditorConfig**: Consistent coding style across editors
+- **Prettier**: Code formatting
+- **Code Spell Checker**: Spell checking for code and docs
+- **Stylelint**: Modern CSS/SCSS linting
+- **Vitest**: Test explorer for Vitest
+- **Pretty TypeScript Errors**: Improves TypeScript error messages
+- **Browserslist**: Browser compatibility highlighting
+
+These extensions are configured in `.vscode/extensions.json` and will be recommended automatically when opening the project in VS Code.
+
+### Code Quality Tools
+
+The project utilizes several tools to maintain code quality:
+
+- **ESLint**: JavaScript and TypeScript linting
+- **Prettier**: Code formatting
+- **Stylelint**: CSS/SCSS linting
+- **Husky**: Git hooks for pre-commit and pre-push validations
+- **lint-staged**: Run linters on git staged files
+- **EditorConfig**: Consistent editor configuration
+
+The configuration for these tools can be found in their respective configuration files in the project root.
 

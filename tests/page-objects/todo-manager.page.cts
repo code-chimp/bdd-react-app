@@ -1,46 +1,78 @@
 import { Locator, Page } from 'playwright';
 
+/**
+ * Represents the Todo Manager page in the application.
+ * Provides methods to interact with the page elements and perform actions.
+ */
 export class TodoManagerPage {
   readonly page: Page;
   readonly url = 'http://localhost:3000';
   readonly taskInput: Locator;
   readonly addButton: Locator;
 
+  /**
+   * Initializes a new instance of the TodoManagerPage class.
+   * @param page - The Playwright Page object used to interact with the browser.
+   */
   constructor(page: Page) {
     this.page = page;
     this.taskInput = page.getByPlaceholder('Add a new task');
     this.addButton = page.getByRole('button', { name: 'Add Task' });
   }
 
+  /**
+   * Navigates to the Todo Manager page.
+   */
   async navigate() {
     await this.page.goto(this.url);
   }
 
+  /**
+   * Adds a new task to the todo list.
+   * @param task - The name of the task to add.
+   */
   async addTask(task: string) {
     await this.taskInput.fill(task);
     await this.addButton.click();
   }
 
+  /**
+   * Marks a task as complete by clicking its associated checkbox.
+   * **Note:** This method is brittle as it only works for unchecked checkboxes.
+   * Prefer using the `toggleTask` method for better reliability.
+   * @param taskName - The name of the task to mark as complete.
+   */
   async markTaskComplete(taskName: string) {
-    // NOTE: This will only grab a checkbox that is unchecked - therefore it is brittle
-    //       Prefer using the toggleTask method to flip a task's state
     const checkbox = this.page.getByRole('checkbox', {
-      name: `Mark ${taskName} as complete`, // When unchecked, aria-label says "Mark as complete"
+      name: `Mark ${taskName} as complete`,
     });
     await checkbox.click();
   }
 
+  /**
+   * Toggles the completion state of a task by clicking its label.
+   * @param taskName - The name of the task to toggle.
+   */
   async toggleTask(taskName: string) {
-    // NOTE: This will locate the label that is tied to the checkbox, therefore clicking it is
-    //       the same as clicking the checkbox directly
     const taskLabel = await this.getTaskLocator(taskName);
     await taskLabel.click();
   }
 
+  /**
+   * Gets the locator for a task by its name.
+   * @param task - The name of the task to locate.
+   * @returns A Locator object for the task.
+   */
   async getTaskLocator(task: string) {
     return this.page.getByText(task, { exact: true });
   }
 
+  /**
+   * Gets the checkbox locator for a task based on its completion state.
+   * @param taskName - The name of the task.
+   * @param completed - Whether the task is completed. Defaults to `false`.
+   * @returns A Locator object for the task's checkbox.
+   */
   async getTaskCheckbox(taskName: string, completed = false) {
     const name = completed ? `Mark ${taskName} as incomplete` : `Mark ${taskName} as complete`;
     return this.page.getByRole('checkbox', { name });
