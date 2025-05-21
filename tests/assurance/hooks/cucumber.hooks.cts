@@ -2,8 +2,10 @@
 import {
   After,
   AfterAll,
+  AfterStep,
   Before,
   BeforeAll,
+  BeforeStep,
   setDefaultTimeout,
   Status,
 } from '@cucumber/cucumber';
@@ -20,7 +22,8 @@ setDefaultTimeout(60000);
  */
 BeforeAll(async function () {
   global.browser = await chromium.launch({
-    headless: false,
+    headless: false, // for dev or demo mode - turn off for CI
+    slowMo: 1500, // for dev or demo mode - remove for CI
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 });
@@ -51,7 +54,7 @@ Before(async function () {
 After(async function ({ pickle, result }) {
   if (result?.status === Status.FAILED) {
     const img = await global.page.screenshot({
-      path: `./reports/screenshots/${pickle.name}.png`,
+      path: `./reports/screenshots/${pickle.name.replace(/ /g, '_')}_error.png`,
       type: 'png',
     });
 
@@ -60,4 +63,28 @@ After(async function ({ pickle, result }) {
 
   await global.page.close();
   await global.context.close();
+});
+
+/**
+ * Hook that runs before each step.
+ */
+BeforeStep(async function ({ pickle }) {
+  const img = await global.page.screenshot({
+    path: `./reports/screenshots/${pickle.name.replace(/ /g, '_')}_before.png`,
+    type: 'png',
+  });
+
+  await this.attach(img, 'image/png');
+});
+
+/**
+ * Hook that runs after each step.
+ */
+AfterStep(async function ({ pickle }) {
+  const img = await global.page.screenshot({
+    path: `./reports/screenshots/${pickle.name.replace(/ /g, '_')}_after.png`,
+    type: 'png',
+  });
+
+  await this.attach(img, 'image/png');
 });

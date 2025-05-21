@@ -26,8 +26,8 @@ export default {
 
   // Array of formatters for test run reports (pretty, HTML, JSON, JUnit)
   format: [
-    'progress-bar',
-    // '@cucumber/pretty-formatter',
+    'progress-bar', // simple progress bar
+    // '@cucumber/pretty-formatter', // or use this for a more detailed output
     'html:reports/bdd-report-basic.html',
     'json:reports/bdd-report.json',
     'junit:reports/bdd-report.xml',
