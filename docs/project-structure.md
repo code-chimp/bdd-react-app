@@ -114,9 +114,9 @@ Contains BDD test features and step definitions.
 
 - **features/**: Contains Gherkin feature files.
   - **todo-manager.feature**: Feature file for the task manager.
-- **hooks/**: Contains test hooks and global configurations.
-  - **cucumber.hooks.cts**: Configuration and lifecycle hooks for Cucumber.js.
-  - **global.d.ts**: Global TypeScript declarations for tests.
+  - **support/**: Contains test hooks and global configurations.
+    - **hooks.cts**: Configuration and lifecycle hooks for Cucumber.js.
+    - **global.d.ts**: Global TypeScript declarations for tests.
 - **step-definitions/**: Contains step definition files.
   - **todo-manager.steps.cts**: Step definitions for the task manager feature.
 

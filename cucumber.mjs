@@ -13,9 +13,9 @@ export default {
   // Array of glob patterns specifying where to find feature files
   paths: ['tests/assurance/features/**/*.feature'],
 
-  // Array of files or glob patterns for step definitions and hooks
+  // Array of files or glob patterns for step definitions and support
   require: [
-    'tests/assurance/hooks/cucumber.hooks.cts',
+    'tests/assurance/features/support/hooks.cts',
     'tests/assurance/step-definitions/**/*.cts',
   ],
 

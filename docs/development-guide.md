@@ -56,7 +56,7 @@ npm run e2e:install
 
 ### Run All Tests
 
-To execute all BDD tests:
+Execute all BDD tests and generate reports, use the following command:
 
 ```bash
 npm run test:bdd
@@ -67,7 +67,7 @@ npm run test:bdd
 To run a specific feature file:
 
 ```bash
-npm run test:bdd ./tests/assurance/features/your-feature-file.feature
+npm run test:bdd:run ./tests/assurance/features/your-feature-file.feature
 ```
 
 ### Run a Specific Scenario
@@ -75,7 +75,7 @@ npm run test:bdd ./tests/assurance/features/your-feature-file.feature
 To run a specific feature file using the **Scenario:** text description:
 
 ```bash
-npm run test:bdd ./tests/assurance/features/your-feature-file.feature -- --name "Delete an existing task item from the task list"
+npm run test:bdd:run ./tests/assurance/features/your-feature-file.feature -- --name "Delete an existing task item from the task list"
 ```
 
 ## Test Reports

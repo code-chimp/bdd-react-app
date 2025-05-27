@@ -66,7 +66,7 @@ a step definition in code for those lines yet.
 Try to run the new scenario and pay attention to the output in the terminal.
 
 ```shell
-npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --dry-run --name "Delete an existing task item from the task list"
+npm run test:bdd:run ./tests/assurance/features/todo-manager.feature -- --dry-run --name "Delete an existing task item from the task list"
 ```
 
 You should see something similar to this in the output:
@@ -97,7 +97,7 @@ Feature: Todo List Manager # tests/assurance/features/todo-manager.feature:1
 Failures:
 
 1) Scenario: Delete an existing task item from the task list # tests/assurance/features/todo-manager.feature:23
-   √ Before # tests/cucumber.hooks.cts:19
+   √ Before # tests/cucumber.support.cts:19
    √ Before # tests/assurance/step-definitions/todo-manager.steps.cts:9
    √ Given a user is on the homepage # tests/assurance/step-definitions/todo-manager.steps.cts:15
    √ And the page contains the following tasks: # tests/assurance/step-definitions/todo-manager.steps.cts:19
@@ -123,7 +123,7 @@ Failures:
 
    - And card "do not touch" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.steps.cts:45
    - And card "complete me" should be displayed in the todo list # tests/assurance/step-definitions/todo-manager.steps.cts:45
-   √ After # tests/cucumber.hooks.cts:26
+   √ After # tests/cucumber.support.cts:26
 
 1 scenario (1 undefined)
 6 steps (2 undefined, 2 skipped, 2 passed)
@@ -167,13 +167,13 @@ Then we can add the suggested code to the step definitions in the feature's cont
 
 ```typescript
 
-When('the user clicks the delete button for the task labeled {string}', async (taskName: string) => {
+When('the user clicks the delete button for the task labeled {string}', async function(taskName: string) {
   const deleteButton = await todoManagerPage.getTaskDeleteButton(taskName);
   await deleteButton.click();
 });
 
 
-Then('card {string} should be removed from the todo list', async (task: string) => {
+Then('card {string} should be removed from the todo list', async function(task: string) {
   const taskLocator = await todoManagerPage.getTaskLocator(task);
   await expect(taskLocator).not.toBeVisible();
 });
@@ -183,9 +183,9 @@ Then('card {string} should be removed from the todo list', async (task: string) 
 Which should result in a successful run if we did everything correctly:
 
 ```shell
-❯ npm run test:bdd ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
+❯ npm run test:bdd:run ./tests/assurance/features/todo-manager.feature -- --name "Delete an existing task item from the task list"
 
-> bdd-react-app@1.0.0 test:bdd
+> bdd-react-app@1.0.0 test:bdd:run
 > cucumber-js ./tests/assurance/features/todo-manager.feature --name Delete an existing task item from the task list
 
 Feature: Todo List Manager # tests/assurance/features/todo-manager.feature:1

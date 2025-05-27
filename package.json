@@ -39,6 +39,7 @@
     "e2e:install": "npx playwright install",
     "test:bdd": "run-s -c test:bdd:run test:bdd:format",
     "test:bdd:run": "cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js",
+    "test:bdd:run:2": "cross-env TS_NODE_PROJECT=tsconfig.cucumber.json TAGS=@basic cucumber-js",
     "test:bdd:format": "run-p test:bdd:format:*",
     "test:bdd:format:1": "node ./scripts/cucumber-html-reporter.mjs",
     "test:bdd:format:2": "node ./scripts/multiple-cucumber-html-reporter.mjs",

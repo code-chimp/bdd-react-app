@@ -14,11 +14,22 @@ Before you begin, ensure you have the following installed on your system:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/code-chimp/bdd-react-app.git
    cd bdd-react-app
    ```
 
 2. Install dependencies:
+
+   Make sure you're using the correct Node version:
+
+   ```bash
+   # If using nvm
+   nvm use
+   # If using Volta (recommended)
+   # Volta will automatically use the correct version
+   ```
+
+   Install dependencies:
 
    ```bash
    npm install
@@ -46,29 +57,45 @@ The build artifacts will be stored in the `dist/` directory.
 
 ## Running Tests
 
-### Install Playwright Browsers
+1. **Install Playwright Browsers** (first time only):
 
-Before running tests for the first time, install the required Playwright browsers:
+   ```bash
+   npm run e2e:install
+   ```
 
-```bash
-npm run e2e:install
-```
+2. **Run BDD Tests**:
 
-### Run All Tests
+   ```bash
+   # Run all tests and generate HTML reports
+   npm run test:bdd
 
-To execute all BDD tests:
+   # Run a specific feature file
+   npm run test:bdd:run ./tests/assurance/features/your-feature.feature
 
-```bash
-npm run test:bdd
-```
+   # Run a specific scenario
+   npm run test:bdd:run ./tests/assurance/features/your-feature.feature -- --name "Your scenario name"
+   
+   # Run scenarios specified by tags (see https://cucumber.io/docs/cucumber/api#tag-expressions)
+   npm run test:bdd:run -- --tags "@your-tag and not @other-tag"
+   ```
 
-### Run a Specific Feature
+## Development Tools
 
-To run a specific feature file:
+### Code Quality
 
-```bash
-npm run test:bdd ./tests/assurance/features/your-feature-file.feature
-```
+- **Format Code**:
+
+  ```bash
+  npm run format:fix    # Fix formatting issues
+  npm run format:check  # Check formatting only
+  ```
+
+- **Lint Code**:
+  ```bash
+  npm run lint       # Run all linters
+  npm run fix:ts     # Fix TypeScript issues
+  npm run fix:styles # Fix CSS issues
+  ```
 
 ## Additional Resources
 
