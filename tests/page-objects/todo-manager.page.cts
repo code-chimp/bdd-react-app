@@ -1,4 +1,4 @@
-import { Locator, Page } from 'playwright';
+import type { Locator, Page } from 'playwright';
 
 /**
  * Represents the Todo Manager page in the application.
